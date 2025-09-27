@@ -4,12 +4,8 @@ class NaiveBayes:
 
     def mean(self, data):
 
-        sample = []
+        sample = [c[self.site] for c in data]
         res = {}
-
-        for c in data:
-
-            sample.append(c[self.site])
 
         for s in sample:
             if s in res:
@@ -22,32 +18,28 @@ class NaiveBayes:
     def orion(self, data):
 
         rec = []
-        sample = self.mean(data)
+        reg = [x for x in data[0]]
+        
+        for index, x in enumerate(reg):
+           
+           num = [d[index] for d in data]
+           let = [n for n in num]
+              
+           rec.append(let)
+           
+        x = rec[3]
+        f = rec[0]
+        y = rec[self.site]
+        
+        res = []
+        
+        for index, b in enumerate(x):
+           if f[index] == 1 and b == 1:
+              res.append(1)
+           else:
+              res.append(0)
 
-        for c in data:
-
-            b = []
-            res = {}
-
-            for d in c:
-                b.append(c[d])
-
-            for s in b:
-                if s in res and sample[1]:
-                    res[s] += 1
-                else:
-                    res[s] = 1
-
-            rec.append(res)
-            
-
-        # for s in rec:
-        #     if s in res:
-        #         res[s] += 1
-        #     else:
-        #         res[s] = 1
-
-        return rec
+        return sum(res)
 
 
 
