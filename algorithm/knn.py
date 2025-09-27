@@ -11,16 +11,13 @@ class KNearestNeighbor:
         for index, s in enumerate(sample):
 
             dac = []
-            rec = []
+            rec = [c for c in s]
 
             for index, x in enumerate(s):
                 if index < len(train):
                     knn = (x - train[index]) ** 2
 
                     dac.append(knn)
-
-            for c in s:
-                rec.append(c)
 
             result.append([math.sqrt(sum(dac)), rec[self.site]])
 
@@ -30,11 +27,7 @@ class KNearestNeighbor:
         rec = self.fit(sample, train)
         rec.sort()
 
-        res = []
-
-        for c in rec[:3]:
-            res.append(c[1])
-
+        res = [c[1] for c in rec[:3]]
         duc = [x for x in res if res.count(x) > 1]
 
         return duc.pop()
