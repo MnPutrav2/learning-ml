@@ -1,6 +1,6 @@
 import math
 
-class KNearestNeighbor:
+class KNearestNeighborClasified:
     def __init__(self, site):
         self.site = site
 
