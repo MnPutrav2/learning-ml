@@ -1,18 +1,19 @@
 # | K-Nearest Neighbor | 
-# |                   |
-# |     Testing       |
+# |                    |
+# |     Testing        |
 
-from algorithm.knn import KNearestNeighborClasified
-import pandas as pd
+from algorithm.knn import KNearestNeighborClassified
+from algorithm.csv_reader import CSVReader
 
-df = pd.read_csv('datasets/data.csv')
-data_sample = df.values.tolist()
-data_train = [2, 0, 1]
+# Format: [Glucose, BMI, Age, Outcome]
+csv = CSVReader('datasets/data.csv')
+data_sample = csv.read()
+data_train = [120, 30.1, 41]
 
-knn = KNearestNeighborClasified(site=3)
+knn = KNearestNeighborClassified(site=3)
 print("KNN Prediction : ", knn.predict(data_sample, data_train))
 
-# |      Testing      |
-# |                   |
+# |      Testing       |
+# |                    |
 # | K-Nearest Neighbor | 
 
